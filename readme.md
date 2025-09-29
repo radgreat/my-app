@@ -73,39 +73,41 @@ task-manager-app/
 
 ## 🏃 How to Run Locally
 
-1. **Clone the repo:**
-   ```bash
-   git clone https://github.com/radgreat/my-app.git
-   cd my-app
+## 🏃 How to Run Locally
 
+**Clone the repo:**
+```bash
+git clone https://github.com/radgreat/my-app.git
+cd my-app
+Install dependencies:
 
-2. Install dependencies
-    npm install
+bash
+Copy code
+npm install
+Create a .env file in root:
 
+env
+Copy code
+PORT=3000
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_jwt_secret
+EMAIL_USER=your_email@example.com
+EMAIL_PASS=your_email_password
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+FACEBOOK_CLIENT_ID=your_facebook_client_id
+FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
+Start the server:
 
-3. Create a .env file in root: 
-    PORT=3000
-    MONGO_URI=your_mongodb_atlas_connection_string
-    JWT_SECRET=your_jwt_secret
-    EMAIL_USER=your_email@example.com
-    EMAIL_PASS=your_email_password
-    GOOGLE_CLIENT_ID=your_google_client_id
-    GOOGLE_CLIENT_SECRET=your_google_client_secret
-    FACEBOOK_CLIENT_ID=your_facebook_client_id
-    FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
+bash
+Copy code
+npm start
+Open in browser:
 
-
-4.  Start the server:
-    npm start
-
-
-5. Open in browser:
-    http://localhost:3000
-
-
-
+arduino
+Copy code
+http://localhost:3000
 🌱 Future Improvements
-
 Add real-time updates with Socket.io.
 
 Create a frontend with React or Vue for better UX.
@@ -115,17 +117,10 @@ Add unit/integration testing.
 Dockerize the app for easy deployment.
 
 📬 Contact
-
 Created by Rad
 GitHub: https://github.com/radgreat
-
 Email: radgreat@gmail.com
-
-LinkedIn: rad
+LinkedIn: Your LinkedIn
 
 📜 License
-
-This project is licensed under the MIT License.    
-
-
-
+This project is licensed under the MIT License.
