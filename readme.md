@@ -73,30 +73,35 @@ task-manager-app/
 
 ## 🏃 How to Run Locally
 
-1. Clone the repo:
-   git clone https://github.com/radgreat/my-app
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/radgreat/my-app.git
    cd my-app
 
+
 2. Install dependencies
-   npm install
+    npm install
+
 
 3. Create a .env file in root: 
+    PORT=3000
+    MONGO_URI=your_mongodb_atlas_connection_string
+    JWT_SECRET=your_jwt_secret
+    EMAIL_USER=your_email@example.com
+    EMAIL_PASS=your_email_password
+    GOOGLE_CLIENT_ID=your_google_client_id
+    GOOGLE_CLIENT_SECRET=your_google_client_secret
+    FACEBOOK_CLIENT_ID=your_facebook_client_id
+    FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
 
-    PORT=3000 
-    MONGO_URI=your_mongodb_atlas_connection_string 
-    JWT_SECRET=your_jwt_secret 
-    EMAIL_USER=your_email@example.com 
-    EMAIL_PASS=your_email_password 
-    GOOGLE_CLIENT_ID=your_google_client_id 
-    GOOGLE_CLIENT_SECRET=your_google_client_secret 
-    FACEBOOK_CLIENT_ID=your_facebook_client_id 
-    FACEBOOK_CLIENT_SECRET=your_facebook_client_secret 
 
 4.  Start the server:
     npm start
 
+
 5. Open in browser:
-   http://localhost:3000
+    http://localhost:3000
+
 
 
 🌱 Future Improvements
