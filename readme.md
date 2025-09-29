@@ -81,6 +81,7 @@ task-manager-app/
    npm install
 
 3. Create a .env file in root:
+
     PORT=3000
     MONGO_URI=your_mongodb_atlas_connection_string
     JWT_SECRET=your_jwt_secret
