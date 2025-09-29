@@ -26,7 +26,7 @@ const app = express();
 const engine = require('ejs-mate');
 app.engine('ejs', engine); // Set ejs-mate as the engine
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const connectDB = async () => {
     try {
