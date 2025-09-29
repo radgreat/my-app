@@ -74,7 +74,6 @@ task-manager-app/
 ## 🏃 How to Run Locally
 
 1. Clone the repo:
-   ```bash
    git clone https://github.com/radgreat/my-app
    cd my-app
 
@@ -112,7 +111,7 @@ Dockerize the app for easy deployment.
 📬 Contact
 
 Created by Rad
-GitHub: https://github.com/radgreat/my-app
+GitHub: https://github.com/radgreat
 
 Email: radgreat@gmail.com
 
