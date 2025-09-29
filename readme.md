@@ -73,8 +73,6 @@ task-manager-app/
 
 ## 🏃 How to Run Locally
 
-## 🏃 How to Run Locally
-
 **Clone the repo:**
 ```bash
 git clone https://github.com/radgreat/my-app.git
