@@ -11,7 +11,7 @@ Perfect for showcasing backend development skills and real-world project experie
 ---
 
 ## 🎯 Live Demo
-Check it out here: 🌐 [Live App on Render](radtask.onrender.com)  
+Check it out here: 🌐 [Live App on Render](YOUR_RENDER_APP_URL)  
 GitHub Repository: [View Source Code](https://github.com/radgreat/my-app)
 
 ---
@@ -33,7 +33,7 @@ Here’s a quick preview of the app in action:
 - 👤 Role-based access control (User/Admin).
 - 📝 CRUD operations for tasks.
 - ⚙ Admin dashboard to manage users (promote/demote).
-- ✅ Express-validator for robust input validation.
+- ✅ express-validator for robust input validation.
 - 📬 Nodemailer for email notifications.
 
 ---
@@ -48,15 +48,20 @@ Here’s a quick preview of the app in action:
 
 ## 📂 Folder Structure
 
+```
 task-manager-app/
-├── config/
+├── controllers/
 ├── middlewares/
-├── modules/
-├── scripts/
+├── models/
+├── routes/
 ├── views/
+├── public/
+├── config/
+├── utils/
 ├── app.js
 ├── package.json
 └── README.md
+```
 
 ---
 
@@ -73,55 +78,61 @@ task-manager-app/
 
 ## 🏃 How to Run Locally
 
-1. **Clone the repo:**
-   ```bash
-   git clone https://github.com/radgreat/my-app.git
-   cd my-app
+**Clone the repo:**
+```bash
+git clone https://github.com/radgreat/my-app.git
+cd my-app
+```
 
-2. **Install dependencies**
-    npm install
+**Install dependencies:**
+```bash
+npm install
+```
 
-3. **Create a .env file in root:**
-    PORT=3000
-    MONGO_URI=your_mongodb_atlas_connection_string
-    JWT_SECRET=your_jwt_secret
-    EMAIL_USER=your_email@example.com
-    EMAIL_PASS=your_email_password
-    GOOGLE_CLIENT_ID=your_google_client_id
-    GOOGLE_CLIENT_SECRET=your_google_client_secret
-    FACEBOOK_CLIENT_ID=your_facebook_client_id
-    FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
+**Create a `.env` file in root:**
+```env
+PORT=3000
+MONGO_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_jwt_secret
+EMAIL_USER=your_email@example.com
+EMAIL_PASS=your_email_password
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+FACEBOOK_CLIENT_ID=your_facebook_client_id
+FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
+```
 
-4.  **Start the server:**
-    npm start
+**Start the server:**
+```bash
+npm start
+```
 
-5. **Open in browser:**
-    http://localhost:3000
+**Open in browser:**
+```
+http://localhost:3000
+```
 
+---
 
+## 🌱 Future Improvements
 
-🌱 Future Improvements
+- Add real-time updates with Socket.io.
+- Create a frontend with React or Vue for better UX.
+- Add unit/integration testing.
+- Dockerize the app for easy deployment.
 
-Add real-time updates with Socket.io.
+---
 
-Create a frontend with React or Vue for better UX.
+## 📬 Contact
 
-Add unit/integration testing.
+Created by **Rad**  
+GitHub: [https://github.com/radgreat](https://github.com/radgreat)  
+Email: radgreat@gmail.com  
+LinkedIn: [Your LinkedIn](https://linkedin.com/in/YOUR_LINKEDIN)
 
-Dockerize the app for easy deployment.
+---
 
-📬 Contact
+## 📜 License
 
-Created by Rad
-GitHub: https://github.com/radgreat
-
-Email: radgreat@gmail.com
-
-LinkedIn: rad
-
-📜 License
-
-This project is licensed under the MIT License.     
-
-
+This project is licensed under the MIT License.
 
