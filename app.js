@@ -40,7 +40,7 @@ const connectDB = async () => {
     } catch (err) {
         console.error(`Can't connect mongoDB: `, err);
 
-        setTimeout(connectDB, 1000);
+        setTimeout(connectDB, 5000);
     }
 }
 
