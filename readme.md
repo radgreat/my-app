@@ -50,14 +50,11 @@ Here’s a quick preview of the app in action:
 
 ```
 task-manager-app/
-├── controllers/
-├── middlewares/
-├── models/
-├── routes/
-├── views/
-├── public/
 ├── config/
-├── utils/
+├── middlewares/
+├── modules/
+├── scripts/
+├── views/
 ├── app.js
 ├── package.json
 └── README.md
@@ -128,7 +125,7 @@ http://localhost:3000
 Created by **Rad**  
 GitHub: [https://github.com/radgreat](https://github.com/radgreat)  
 Email: radgreat@gmail.com  
-LinkedIn: [Your LinkedIn](https://linkedin.com/in/YOUR_LINKEDIN)
+LinkedIn: [LinkedIn](https://www.linkedin.com/in/rad-dgreat-92725029a/)
 
 ---
 
