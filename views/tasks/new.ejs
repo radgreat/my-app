@@ -1,0 +1,23 @@
+<% layout('layouts/layout') %>
+
+<h2>Add New Task</h2>
+
+<form action="/tasks/created" method="POST" class="mt-4">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title *</label>
+    <input type="text" class="form-control" id="title" name="title" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="details" class="form-label">Details</label>
+    <textarea class="form-control" id="details" name="details"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="dueDate" class="form-label">Due Date</label>
+    <input type="date" class="form-control" id="dueDate" name="dueDate">
+  </div>
+
+  <button type="submit" class="btn btn-success">Create Task</button>
+  <a href="/tasks/read" class="btn btn-secondary">Cancel</a>
+</form>

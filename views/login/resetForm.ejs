@@ -1,0 +1,50 @@
+<% layout('layouts/layout') %>
+
+<div class="card p-4 shadow-sm mx-auto" style="max-width: 400px;">
+  <h3 class="mb-3 text-center">Reset Password</h3>
+
+  <% if (success && success.length > 0) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= success[0] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= error[0] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>     
+
+  <form method="POST" action="/auth/reset">
+    <div class="mb-3">
+      <label for="password" class="form-label">New Password</label>
+      <div class="input-group w-100">
+        <input type="password" name="password" id="password" class="form-control border-end-0" value="<%= formData.password || '' %>" required>
+        <span class="input-group-text bg-white border-start-0" style="border-left: none;">
+          <i class="bi bi-eye-slash toggle-password" id="togglePassword" style="cursor: pointer;"></i>
+        </span>
+      </div>
+      <small id="strengthMessage" class="form-text mt-1 fw-bold"></small>
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <div class="input-group w-100">
+        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control border-end-0" value="<%= formData.confirmPassword || '' %>" required>
+        <span class="input-group-text bg-white border-start-0" style="border-left: none;">
+          <i class="bi bi-eye-slash toggle-confirm" id="toggleConfirm" style="cursor: pointer;"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="input-group w-100">
+        <input type="hidden" name="token" id="token" class="form-control border-end-0" value="<%= token %>">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Submit</button>
+  </form>
+</div>

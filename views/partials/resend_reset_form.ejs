@@ -1,0 +1,20 @@
+<% layout('layouts/layout') %>
+
+<div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= error[0] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %> 
+
+  <h3><%= title %></h3>
+  
+  <form action="<%= action %>" method="<%= method %>">
+    <div class="mb-3">
+      <label>Email address</label>
+      <input type="email" name="email" class="form-control" value="<%= formData.email || '' %>" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100"><%= buttonText %></button>
+  </form>
+</div>

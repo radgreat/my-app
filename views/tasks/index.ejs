@@ -1,0 +1,86 @@
+<% layout('layouts/layout') %>
+
+<a href="/tasks/new" class="btn btn-primary mb-3">+ Add New Task</a>
+
+<% if (tasks.length === 0) { %>
+  <p>No tasks yet.</p>
+<% } else { %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Due</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tasks.forEach(task => { %>
+        <tr>
+          <td><%= task.title %></td>
+          <td>
+            <span class="badge bg-<%= task.status === 'completed' ? 'success' : 'warning' %>">
+              <%= task.status %>
+            </span>
+          </td>
+          <td><%= task.dueDate ? task.dueDate.toDateString() : '—' %></td>
+          <td>
+            <a href="/tasks/edit/<%= task._id %>?page=<%=currentPage %>" class="btn btn-sm btn-info">Edit</a>
+            <form action="/tasks/delete/<%= task._id %>?page=<%= currentPage %>" method="POST" class="d-inline">
+              <button class="btn btn-sm btn-danger" onclick="return confirm('Delete task?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% 
+    const maxVisible = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+    let endPage = startPage + maxVisible - 1;
+
+    if (endPage > totalPages) {
+      endPage = totalPages;
+      startPage = Math.max(1, endPage - maxVisible + 1);
+    }
+  %>
+
+  <na v aria-label="Task pagination">
+    <ul class="pagination justify-content-center">
+
+      <!-- Previous Button -->
+      <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+        <a class="page-link" href="?page=<%= currentPage - 1 %>">Previous</a>
+      </li>
+
+      <!-- First Page & Ellipsis -->
+      <% if (startPage > 1) { %>
+        <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+        <% if (startPage > 2) { %>
+          <li class="page-item disabled"><span class="page-link">…</span></li>
+        <% } %>
+      <% } %>
+
+      <!-- Dynamic Page Numbers -->
+      <% for(let i = startPage; i <= endPage; i++) { %>
+        <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+          <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+        </li>
+      <% } %>
+
+      <!-- Ellipsis & Last Page -->
+      <% if (endPage < totalPages) { %>
+        <% if (endPage < totalPages - 1) { %>
+          <li class="page-item disabled"><span class="page-link">…</span></li>
+        <% } %>
+        <li class="page-item"><a class="page-link" href="?page=<%= totalPages %>"><%= totalPages %></a></li>
+      <% } %>
+
+      <!-- Next Button -->
+      <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+        <a class="page-link" href="?page=<%= currentPage + 1 %>">Next</a>
+      </li>
+
+    </ul>
+  </nav>
+<% } %>

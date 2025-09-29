@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .toggle-login-password {
+      position: absolute;
+      top: 70%;                /* vertical center inside field */
+      right: 15px;             /* horizontal right */
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #6c757d;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 53%;                /* vertical center inside field */
+      right: 8px;             /* horizontal right */
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #6c757d;
+    }
+
+    .toggle-confirm {
+      position: absolute;
+      top: 60%;                /* vertical center inside field */
+      right: 8px;             /* horizontal right */
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #6c757d;
+    }
+
+    .input-group-text {
+      display: flex;
+      align-items: center; /* vertical center */
+      justify-content: center; /* horizontal center */
+      padding: 0 0.75rem; /* enough horizontal spacing */
+    }    
+
+    /* Remove default input focus glow */
+    .form-control:focus {
+      border-color: #86b7fe; /* ⬅️ lighter blue */
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      outline: none;    
+    }
+
+    /* Glow the entire input group when focused */
+    .input-group:focus-within {
+      border: 1px solid #86b7fe; 
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); 
+      border-radius: 0.375rem;
+      z-index: 2;    
+    }
+
+    .input-group .form-control:focus {
+      box-shadow: none !important;
+      border-color: #ced4da;      
+    }    
+
+    .input-group-text {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: none;
+    }
+
+    /****THEME MODE*****/
+    :root {
+      --bg: #f8f9fa;
+      --text: #212529;
+      --nav-bg: #fff;
+      --nav-text: #212529;
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #f1f1f1;
+      --nav-bg: #1f1f1f;
+      --nav-text: #ffffff;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .navbar {
+      background-color: var(--nav-bg) !important;
+    }
+
+    .navbar .nav-link,
+    .navbar-brand,
+    .navbar .dropdown-toggle {
+      color: var(--nav-text) !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--nav-bg);
+      color: var(--nav-text);
+    }
+
+    .dropdown-item {
+      color: var(--nav-text);
+    }
+
+    .dropdown-item:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }    
+
+    body, .navbar, .dropdown-menu {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }  
+
+    /* Card and header */
+    [data-theme="dark"] .card {
+      background-color: #1f1f1f;
+      color: #f1f1f1;
+      border-color: #333;
+    }
+
+    [data-theme="dark"] .card-header {
+      background-color: #2a2a2a !important;
+      color: #f1f1f1 !important;
+      border-bottom: 1px solid #444;
+    }
+
+    /* Table */
+    [data-theme="dark"] table.table {
+      background-color: transparent; /* Let card bg show */
+      color: #f1f1f1;
+      border-color: #444;
+    }
+
+    [data-theme="dark"] table.table thead {
+      background-color: #2a2a2a;
+      color: #f1f1f1;
+    }
+
+    [data-theme="dark"] table.table tbody tr:nth-child(odd) {
+      background-color: #2b2b2b;
+    }
+
+    [data-theme="dark"] table.table tbody tr:nth-child(even) {
+      background-color: #242424;
+    }
+
+    [data-theme="dark"] table.table tbody tr:hover {
+      background-color: #3a3a3a;
+    }
+
+    /* Table borders */
+    [data-theme="dark"] table.table th,
+    [data-theme="dark"] table.table td {
+      border-color: #444;
+    }
+
+    /* Badges */
+    [data-theme="dark"] .badge.bg-success {
+      background-color: #28a745; /* or a lighter green if needed */
+    }
+
+    [data-theme="dark"] .badge.bg-secondary {
+      background-color: #6c757d;
+      color: #f1f1f1;
+    }
+
+    /* Buttons */
+    [data-theme="dark"] .btn-warning {
+      background-color: #d39e00;
+      border-color: #b38600;
+      color: #212529;
+    }
+
+    [data-theme="dark"] .btn-warning:hover {
+      background-color: #b38600;
+      border-color: #906f00;
+    }
+
+    /* Smooth transition */
+    .card, .card-header, table, th, td, tbody, thead, tr, .badge, .btn {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }   
+    /***** end theme *****/
+  </style>
+</head>
+<!-- <body class="bg-light"> -->
+<body class="d-flex flex-column min-vh-100" style="background-color: var(--bg); color: var(--text);">
+  <!-- <div class="container py-5"> -->
+    <!-- Main Content -->
+    <main class="container py-4 flex-fill">
+
+    <div class="d-flex justify-content-end mb-3">
+      <% if (username && !boolAdmin) { %>
+        <p class="mb-0">Welcome, <strong><%= username %></strong></p>
+      <%} %>
+
+      <% if (user && !boolAdmin) { %>
+        <form action="/auth/logout" method="POST">
+          <button class="btn btn-danger btn-sm">Logout</button>
+        </form>
+      <% } else if (currentPath !== '/auth' && !boolAdmin) { %>
+        <a href="/auth" class="btn btn-primary btn-sm">Login</a>
+      <% } %>
+    </div>    
+
+    <% if(!boolAdmin){%>
+        <h1 class="mb-4 text-center">📝 Task Manager</h1>
+      <%}else{%>
+        <%- include('./header') %>
+      <% } %>  
+
+      <%- body %>
+    </main>
+
+    <% if (boolAdmin) { %>
+      <%- include('./footer') %>
+    <% } %>
+  <!-- </div> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Auto-dismiss alert after 5 seconds
+    const alerts = document.querySelectorAll('.alert');
+
+    alerts.forEach(alert => {
+      setTimeout(() => {
+        const bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+        bsAlert.close();
+      }, 5000); // 5 seconds
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const togglePassword = document.getElementById('togglePassword');
+      const password = document.getElementById('password');
+
+      const toggleConfirm = document.getElementById('toggleConfirm');
+      const confirmPassword = document.getElementById('confirmPassword');
+
+      function setupToggle(toggleBtn, inputField) {
+        toggleBtn.addEventListener('click', function () {
+          const type = inputField.getAttribute('type') === 'password' ? 'text' : 'password';
+          inputField.setAttribute('type', type);
+
+          this.classList.toggle('bi-eye');
+          this.classList.toggle('bi-eye-slash');
+        });
+      }
+
+      if (togglePassword && password) setupToggle(togglePassword, password);
+      if (toggleConfirm && confirmPassword) setupToggle(toggleConfirm, confirmPassword);
+
+      //****** THEME MODE ********/
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      // Function to update the icon based on theme
+      function updateIcon(theme) {
+        if (theme === 'dark') {
+          themeIcon?.classList.remove('bi-sun');
+          themeIcon?.classList.add('bi-moon');
+        } else {
+          themeIcon?.classList.remove('bi-moon');
+          themeIcon?.classList.add('bi-sun');
+        }
+      }
+
+      // Get theme from localStorage or system preference
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateIcon(currentTheme);
+      } else if (prefersDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateIcon('dark');
+      } else {
+        updateIcon('light'); // fallback
+      }
+
+      // Handle click on themeToggle button
+      themeToggle?.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcon(newTheme); // ← 🌓 Update icon dynamically
+      });
+      //********* end theme *******/       
+    });
+
+    const strengthMessage = document.getElementById('strengthMessage');
+
+    password.addEventListener('input', function () {
+      const val = password.value;
+      let strength = '';
+      let color = '';
+
+      if (val.length < 6) {
+        strength = 'Too short';
+        color = 'text-danger';
+      } else if (!/[A-Z]/.test(val) || !/[0-9]/.test(val)) {
+        strength = 'Weak';
+        color = 'text-warning';
+      } else if (val.length >= 6 && /[A-Z]/.test(val) && /[0-9]/.test(val)) {
+        strength = 'Strong';
+        color = 'text-success';
+      }
+
+      strengthMessage.textContent = `Password strength: ${strength}`;
+      strengthMessage.className = `form-text mt-1 fw-bold ${color}`;
+    });
+  </script>  
+</body>
+</html>

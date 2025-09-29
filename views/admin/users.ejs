@@ -1,0 +1,47 @@
+<% layout('layouts/layout') %>
+
+<div class="container mt-5">
+  <h1 class="mb-4">Admin Dashboard</h1>
+
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">User Management</h5>
+    </div>
+    <div class="card-body">
+      <% if (users.length === 0) { %>
+        <p>No users found.</p>
+      <% } else { %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Change Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(account => { %>
+              <tr>
+                <td><%= account.email %></td>
+                <td><span class="badge <%= user.role === 'admin' ? 'bg-success' : 'bg-secondary' %>"><%= account.role %></span></td>
+                <td>
+                  <% if (account._id.toString() !== user.toString()) { %> <!-- prevent changing your own role -->
+                    <form action="/admin/users/<%= account._id %>/role" method="POST" class="d-inline">
+                      <input type="hidden" name="role" value="<%= account.role === 'admin' ? 'user' : 'admin' %>">
+                      <button type="submit" class="btn btn-sm btn-warning">
+                        Make <%= account.role === 'admin' ? 'User' : 'Admin' %>
+                      </button>
+                    </form>
+                  <% } else { %>
+                    <em>(you)</em>
+                  <% } %>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } %>
+    </div>
+  </div>
+</div>
+

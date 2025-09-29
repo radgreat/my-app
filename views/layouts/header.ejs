@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm sticky-top">
+  <div class="container-fluid">
+    <!-- Logo / App Name -->
+    <a class="navbar-brand d-flex align-items-center text-dark fw-semibold" href="/admin">
+      <i class="bi bi-kanban-fill me-2 fs-4 text-primary"></i>
+      <span class="fs-5">Admin Panel</span>
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links + Dropdown -->
+    <div class="collapse navbar-collapse" id="adminNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <!-- Admin Navigation Links -->
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/admin/users">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/tasks/read">Tasks</a>
+        </li>
+
+        <!-- User Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-1"></i> <%= username %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="/admin/profile"><i class="bi bi-person me-2"></i> Profile</a></li>
+            <li><a class="dropdown-item" href="/admin/settings"><i class="bi bi-gear me-2"></i> Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form action="/auth/logout" method="POST" class="d-inline">
+                <button class="dropdown-item text-danger"><i class="bi bi-box-arrow-right me-2"></i> Logout</button>
+              </form>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <button id="themeToggle" class="btn btn-outline-secondary btn-sm ms-3" title="Toggle Dark Mode">
+            <i id="themeIcon" class="bi bi-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

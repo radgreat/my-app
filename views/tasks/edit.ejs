@@ -1,0 +1,29 @@
+<% layout('layouts/layout') %>
+
+<form action="/tasks/edit/<%= task._id %>?page=<%= currentPage %>" method="POST">
+  <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" name="title" value="<%= task.title %>" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Details</label>
+    <textarea name="details" class="form-control" rows="3"><%= task.details %></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Due Date</label>
+    <input type="date" name="dueDate" value="<%= task.dueDate ? task.dueDate.toISOString().split('T')[0] : '' %>" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Status</label>
+    <select name="status" class="form-select">
+      <option value="pending" <%= task.status === 'pending' ? 'selected' : '' %>>Pending</option>
+      <option value="completed" <%= task.status === 'completed' ? 'selected' : '' %>>Completed</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update Task</button>
+  <a href="/tasks/read?page=<%= currentPage %>" class="btn btn-secondary">Cancel</a>
+</form>
