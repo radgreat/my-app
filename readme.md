@@ -64,12 +64,15 @@ task-manager-app/
 
 ## 🛠 Tech Stack
 
-- **Backend:** Node.js, Express.js  
-- **Database:** MongoDB Atlas  
-- **Authentication:** JWT, OAuth (Google, Facebook)  
+- **Backend:** Node.js, Express, MongoDB, Mongoose  
+- **Templating:** EJS, EJS-Mate, Express Layouts  
+- **Auth:** Passport.js, JWT, bcrypt, Sessions  
+- **Email:** Nodemailer  
+- **OAuth:** Google, Facebook  
 - **Validation:** express-validator  
-- **Email Service:** Nodemailer  
-- **Hosting:** Render  
+- **Flash Messages:** connect-flash  
+- **Rate Limiting:** express-rate-limit  
+- **Frontend:** Vanilla JS + basic styling (dark mode support)
 
 ---
 
