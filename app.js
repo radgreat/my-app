@@ -1,6 +1,6 @@
 require('dotenv').config();
-//const MONGO_URI = process.env.MONGO_URI;
-const MONGO_URI = 'mongodb://localhost:27017/taskdb';
+const MONGO_URI = process.env.MONGO_URI;
+//const MONGO_URI = 'mongodb://localhost:27017/taskdb';
 const EMAIL_SECRET = process.env.EMAIL_SECRET;
 
 const express = require('express');
