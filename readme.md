@@ -49,6 +49,7 @@ Here’s a quick preview of the app in action:
 ---
 
 ## 📁 Folder Structure
+```bash
 myapp/
 ├── modules/
 │   ├── login/
@@ -71,6 +72,7 @@ myapp/
 ├── .env.example
 ├── package.json
 └── app.js
+```
 
 ---
 
