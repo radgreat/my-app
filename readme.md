@@ -130,23 +130,23 @@ http://localhost:3000
 
 ## Learning Goals
 
-This app was built to learn and showcase:
+- This app was built to learn and showcase:
 
-Secure authentication flows
+- Secure authentication flows
 
-Role-based access control
+- Role-based access control
 
-OAuth integrations
+- OAuth integrations
 
-Full stack CRUD functionality
+- Full stack CRUD functionality
 
-Frontend/backend session control
+- Frontend/backend session control
 
-Middleware usage and modular architecture
+- Middleware usage and modular architecture
 
-Email flows using nodemailer
+- Email flows using nodemailer
 
-Security best practices (rate limiting, session expiry, etc.)
+- Security best practices (rate limiting, session expiry, etc.)
 
 
 ---
