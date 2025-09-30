@@ -133,7 +133,7 @@ http://localhost:3000
 
 ## Learning Goals
 
-- This app was built to learn and showcase:
+This app was built to learn and showcase:
 
 - Secure authentication flows
 
