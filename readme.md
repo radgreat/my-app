@@ -26,15 +26,17 @@ Here’s a quick preview of the app in action:
 
 ## 🚀 Features
 
-- 🔒 User authentication with email/password.
-- 📧 Email verification and resend verification link.
-- 🌐 Google & Facebook OAuth login.
-- 🛡 JWT-based authentication.
-- 👤 Role-based access control (User/Admin).
-- 📝 CRUD operations for tasks.
-- ⚙ Admin dashboard to manage users (promote/demote).
-- ✅ express-validator for robust input validation.
-- 📬 Nodemailer for email notifications.
+✅ User registration & login (email + password)  
+✅ Google & Facebook OAuth login  
+✅ JWT-based email confirmation & forgot password flows  
+✅ Session-based authentication with flash messaging  
+✅ Admin panel to manage users (promote/demote/delete)  
+✅ Full CRUD for tasks (create, edit, delete, paginate)  
+✅ Theme toggle (light/dark mode)  
+✅ Rate limiting (prevent brute-force)  
+✅ Role-based route protection (middleware)  
+✅ Pagination for long task lists  
+✅ Clean folder structure and modular design  
 
 ---
 
@@ -46,19 +48,29 @@ Here’s a quick preview of the app in action:
 
 ---
 
-## 📂 Folder Structure
-
-```
-task-manager-app/
-├── config/
-├── middlewares/
+## 📁 Folder Structure
+myapp/
 ├── modules/
+│   ├── login/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   └── routes/
+│   ├── tasks/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   └── routes/
+│   └── admin/
+│       └── ...
+├── middleware/
+├── public/
+│   ├── css/
+│   └── js/
 ├── scripts/
+│   └── seedAdmin.js
 ├── views/
-├── app.js
+├── .env.example
 ├── package.json
-└── README.md
-```
+└── app.js
 
 ---
 
@@ -88,6 +100,8 @@ cd my-app
 ```bash
 npm install
 ```
+Seed an admin user (optional)
+npm run seed:admin
 
 **Create a `.env` file in root:**
 ```env
@@ -112,6 +126,27 @@ npm start
 http://localhost:3000
 ```
 
+## Learning Goals
+
+This app was built to learn and showcase:
+
+Secure authentication flows
+
+Role-based access control
+
+OAuth integrations
+
+Full stack CRUD functionality
+
+Frontend/backend session control
+
+Middleware usage and modular architecture
+
+Email flows using nodemailer
+
+Security best practices (rate limiting, session expiry, etc.)
+
+
 ---
 
 ## 🌱 Future Improvements
@@ -125,7 +160,7 @@ http://localhost:3000
 
 ## 📬 Contact
 
-Created by **Rad**  
+Created by **rad(Muldong)**  
 GitHub: [https://github.com/radgreat](https://github.com/radgreat)  
 Email: radgreat@gmail.com  
 LinkedIn: [LinkedIn](https://www.linkedin.com/in/rad-dgreat-92725029a/)
