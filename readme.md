@@ -102,7 +102,7 @@ cd my-app
 ```bash
 npm install
 ```
-### Seed an admin user (optional)
+**Seed an admin user (optional)**
 
 ```bash
 npm run seed:admin
