@@ -10,13 +10,13 @@ Perfect for showcasing backend development skills and real-world project experie
 
 ---
 
-## 🎯 Live Demo
+## Live Demo
 Check it out here: 🌐 [Live App on Render](https://radtask.onrender.com)  
 GitHub Repository: [View Source Code](https://github.com/radgreat/my-app)
 
 ---
 
-## 🎥 Demo Preview
+## Demo Preview
 Here’s a quick preview of the app in action:
 
 ![Demo GIF](link-to-your-demo-gif.gif)  
@@ -24,7 +24,7 @@ Here’s a quick preview of the app in action:
 
 ---
 
-## 🚀 Features
+## Features
 
 ✅ User registration & login (email + password)  
 ✅ Google & Facebook OAuth login  
@@ -40,7 +40,7 @@ Here’s a quick preview of the app in action:
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 | Login Screen | Dashboard | Admin Panel |
 |--------------|-----------|-------------|
@@ -48,7 +48,7 @@ Here’s a quick preview of the app in action:
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 ```bash
 myapp/
 ├── modules/
@@ -76,7 +76,7 @@ myapp/
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Backend:** Node.js, Express, MongoDB, Mongoose  
 - **Templating:** EJS, EJS-Mate, Express Layouts  
@@ -90,7 +90,7 @@ myapp/
 
 ---
 
-## 🏃 How to Run Locally
+## How to Run Locally
 
 **Clone the repo:**
 ```bash
@@ -154,7 +154,7 @@ This app was built to learn and showcase:
 
 ---
 
-## 🌱 Future Improvements
+## Future Improvements
 
 - Add real-time updates with Socket.io.
 - Create a frontend with React or Vue for better UX.
@@ -163,7 +163,7 @@ This app was built to learn and showcase:
 
 ---
 
-## 📬 Contact
+## Contact
 
 Created by **rad(Muldong)**  
 GitHub: [https://github.com/radgreat](https://github.com/radgreat)  
@@ -172,7 +172,7 @@ LinkedIn: [LinkedIn](https://www.linkedin.com/in/rad-dgreat-92725029a/)
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License.
 
