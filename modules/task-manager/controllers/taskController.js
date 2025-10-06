@@ -1,4 +1,5 @@
 const Task = require('../models/task');
+const { body, validationResult } = require('express-validator');
 
 //show all tasks
 exports.getAllTasks = async (req, res) => {
@@ -40,25 +41,37 @@ exports.newTaskForm = (req, res) => {
 };
 
 //create new task
-exports.createTask = async (req, res) => {
-    const { title, details, dueDate } = req.body;
+exports.createTask = [ 
+    body('title').trim().notEmpty().withMessage('Title cannot be empty'),    
 
-    try {
-        const task = new Task({
-            title: title,
-            details: details,
-            dueDate: dueDate,
-            userid: req.session.userId
-        });
+    async (req, res) => {
+        const errors = validationResult(req).array({ onlyFirstError: true }); 
 
-        await task.save();
+        const { title, details, dueDate } = req.body;
 
-        res.redirect('/tasks/read');
-    } catch (err) {
-        console.error('Error saving new task: ', err);
-        res.status(500).send('Error creating task');
+        if (errors.length > 0) {
+            req.flash('error', errors[0].msg);
+            req.flash('formData', { title, details, dueDate });
+            return res.redirect('/tasks/new');
+        } 
+
+        try {
+            const task = new Task({
+                title: title,
+                details: details,
+                dueDate: dueDate,
+                userid: req.session.userId
+            });
+
+            await task.save();
+
+            res.redirect('/tasks/read');
+        } catch (err) {
+            console.error('Error saving new task: ', err);
+            res.status(500).send('Error creating task');
+        }
     }
-};
+];
 
 //show form to edit
 exports.editTaskForm = async (req, res) => {
@@ -79,23 +92,35 @@ exports.editTaskForm = async (req, res) => {
 
 
 //update a task
-exports.updateTask = async (req, res) => {
-    const { title, details, dueDate, status } = req.body;
-    const currentPage = req.query.page;
+exports.updateTask = [ 
+    body('title').trim().notEmpty().withMessage('Title cannot be empty'),
 
-    try {
-        await Task.findByIdAndUpdate(req.params.id, {
-            title,
-            details, 
-            dueDate, 
-            status
-        });
+    async (req, res) => {
+        const errors = validationResult(req).array({ onlyFirstError: true });         
 
-        res.redirect(`/tasks/read?page=${currentPage}`);
-    } catch (err) {
-        res.status(500).send('Error updaing task.');
+        const { title, details, dueDate, status } = req.body;
+
+        if (errors.length > 0) {
+            req.flash('error', errors[0].msg);
+            req.flash('formData', { title, details, dueDate, status });
+            return res.redirect(`/tasks/edit/${req.params.id}?page=${req.query.page}`);
+        } 
+
+        const currentPage = req.query.page;
+
+        try {
+            await Task.findByIdAndUpdate(req.params.id, {
+                title,
+                details, 
+                dueDate, 
+                status
+            });
+
+            res.redirect(`/tasks/read?page=${currentPage}`);
+        } catch (err) {
+            res.status(500).send('Error updaing task.');
     }
-};
+}];
 
 //delete task
 exports.deleteTask = async (req, res) => {

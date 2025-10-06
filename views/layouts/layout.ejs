@@ -208,9 +208,9 @@
       <% } %>
     </div>    
 
-    <% if(!boolAdmin){%>
+      <% if(!boolAdmin && currentPath !== '/auth'){%>
         <h1 class="mb-4 text-center">📝 Task Manager</h1>
-      <%}else{%>
+      <%}else if(boolAdmin){%>
         <%- include('./header') %>
       <% } %>  
 
